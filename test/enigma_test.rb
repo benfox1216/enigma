@@ -10,13 +10,6 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, @enigma
   end
   
-  def test_it_has_attributes
-    character_set = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-    
-    assert_equal "date", @enigma.today
-    assert_equal character_set, @enigma.character_set
-  end
-  
   def test_it_can_encrypt
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
     
