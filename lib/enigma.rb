@@ -1,8 +1,9 @@
 class Enigma
-  attr_reader :today
+  attr_reader :today, :character_set
   
   def initialize
     @today = "date"
+    @character_set = ("a".."z").to_a << " "
   end
   
   def encrypt(message, key, date)
