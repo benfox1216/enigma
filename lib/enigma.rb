@@ -1,9 +1,4 @@
 class Enigma
-  attr_reader :today
-  
-  def initialize
-    @today = "date"
-  end
   
   def encrypt(message, key, date)
     {encryption: "keder ohulw", key: "02715", date: "040895"}
