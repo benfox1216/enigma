@@ -25,16 +25,16 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_can_create_shift_keys
-    shift_keys = ["02", "27", "71", "15"]
+    shift_keys = [02, 27, 71, 15]
     assert_equal shift_keys, @encryption.create_shift_keys(@encryption.key)
   end
   
   def test_it_can_offset_shift_keys
     shift_keys = @encryption.create_shift_keys(@encryption.key)
-    offset_shift_keys = ["03", "30", "69", "18"]
+    offset_shift_keys = {A: 3, B: 27, C: 73, D: 20}
     
     assert_equal offset_shift_keys,
-      @encryption.offset_shift_keys(shift_keys)
+      @encryption.offset_shift_keys(shift_keys, @encryption.date)
   end
   
   def test_it_can_shift_message

@@ -16,7 +16,8 @@ class Encryption
   end
   
   def get_encryption
-    create_shift_keys(@key)
+    shift_keys = create_shift_keys(@key)
+    offset_shift_keys = offset_shift_keys(shift_keys, @date)
     shift_message(@message)
     
     {encryption: "keder ohulw", key: @key, date: "040895"}
