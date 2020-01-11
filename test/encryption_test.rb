@@ -38,6 +38,7 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_can_shift_message
-    assert_equal "keder ohulw", @encryption.shift_message(@encryption.message)
+    assert_equal "keder ohulw",
+      @encryption.shift_message(@encryption.message, @encryption.character_set)
   end
 end

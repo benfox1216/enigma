@@ -22,7 +22,9 @@ module Manipulatable
     offset_shift_keys
   end
   
-  def shift_message(message)
+  def shift_message(message, character_set)
+    split_message = message.split(//)
+    require "pry"; binding.pry
     "keder ohulw"
   end
 end
