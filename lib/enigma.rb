@@ -1,10 +1,10 @@
 class Enigma
-  
   def encrypt(message, key, date)
-    {encryption: "keder ohulw", key: "02715", date: "040895"}
+    encryption = Encryption.new(message, @key, @date)
+    encryption.get_encryption
   end
   
-  def decrypt(ciphertext, key, date)
+  def decrypt(ciphertext, key = nil, date = nil)
     {decryption: "hello world", key: "02715", date: "040895"}
   end
   

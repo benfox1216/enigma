@@ -22,6 +22,12 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
   
+  def test_it_can_generage_random_key
+    expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
+    
+    assert_equal expected, @enigma.encrypt("hello world", nil, "040895")
+  end
+  
   def test_it_has_rotate_method
     assert_equal "array", @enigma.rotate
   end
