@@ -29,6 +29,14 @@ class EncryptionTest < Minitest::Test
     assert_equal shift_keys, @encryption.create_shift_keys(@encryption.key)
   end
   
+  def test_it_can_offset_shift_keys
+    shift_keys = @encryption.create_shift_keys(@encryption.key)
+    offset_shift_keys = ["03", "30", "69", "18"]
+    
+    assert_equal offset_shift_keys,
+      @encryption.offset_shift_keys(shift_keys)
+  end
+  
   def test_it_can_shift_message
     assert_equal "keder ohulw", @encryption.shift_message(@encryption.message)
   end
