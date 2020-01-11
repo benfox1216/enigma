@@ -2,7 +2,7 @@ require 'manipulatable'
 
 class Encryption
   include Manipulatable
-  attr_reader :today, :character_set
+  attr_reader :character_set, :message, :key, :date
   
   def initialize(message, key, date)
     @character_set = ("a".."z").to_a << " "
@@ -16,9 +16,9 @@ class Encryption
   end
   
   def get_encryption
-    shift_keys(@key)
-    shift(@message)
-    rotate(@character_set)
+    create_shift_keys(@key)
+    shift_message(@message)
+    
     {encryption: "keder ohulw", key: @key, date: "040895"}
   end
 end

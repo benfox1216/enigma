@@ -1,5 +1,5 @@
 module Manipulatable
-  def shift_keys(key)
+  def create_shift_keys(key)
     shift_keys = []
     
     shift_keys << key[0] + key[1]
@@ -11,14 +11,6 @@ module Manipulatable
   end
   
   def shift_message(message)
-    require "pry"; binding.pry
-  end
-  
-  def rotate(character_set)
-    "array"
-  end
-  
-  def with_index
-    "enumerator"
+    "keder ohulw"
   end
 end
