@@ -12,19 +12,29 @@ module Manipulatable
   
   def offset_shift_keys(shift_keys, date)
     offset_keys = (date.to_i**2).to_s.split(//).last(4)
-    offset_shift_keys = {}
+    new_shift_keys = {}
   
-    offset_shift_keys[:A] = shift_keys[0] + offset_keys[0].to_i
-    offset_shift_keys[:B] = shift_keys[1] + offset_keys[1].to_i
-    offset_shift_keys[:C] = shift_keys[2] + offset_keys[2].to_i
-    offset_shift_keys[:D] = shift_keys[3] + offset_keys[3].to_i
+    new_shift_keys[:A] = shift_keys[0] + offset_keys[0].to_i
+    new_shift_keys[:B] = shift_keys[1] + offset_keys[1].to_i
+    new_shift_keys[:C] = shift_keys[2] + offset_keys[2].to_i
+    new_shift_keys[:D] = shift_keys[3] + offset_keys[3].to_i
     
-    offset_shift_keys
+    new_shift_keys
   end
   
-  def shift_message(message, character_set)
+  def shift_message(message, character_set, offset_shift_keys)
     split_message = message.split(//)
-    require "pry"; binding.pry
+    encrypted_message = []
+    
+    split_message.each.with_index do |letter, val|
+      
+      character_set.rotate(4)
+      
+      if val < 30
+        ""
+      end
+    end
+    
     "keder ohulw"
   end
 end

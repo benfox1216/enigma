@@ -38,7 +38,11 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_can_shift_message
+    message = @encryption.message
+    char_set = @encryption.character_set
+    offset_shift_keys = {A: 3, B: 27, C: 73, D: 20}
+    
     assert_equal "keder ohulw",
-      @encryption.shift_message(@encryption.message, @encryption.character_set)
+      @encryption.shift_message(message, char_set, offset_shift_keys)
   end
 end
