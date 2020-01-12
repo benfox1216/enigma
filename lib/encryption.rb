@@ -6,7 +6,7 @@ class Encryption
   
   def initialize(message, key, date)
     @character_set = ("a".."z").to_a << " "
-    @message = message
+    @message = message.downcase
     
     @random_key = rand(99999).to_s.rjust(5, '0')
     @key = (@random_key if key == nil) || key
