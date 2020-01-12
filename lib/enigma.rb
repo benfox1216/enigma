@@ -1,4 +1,5 @@
 require './lib/encryption'
+require './lib/decryption'
 
 class Enigma
   def encrypt(message, key, date)
