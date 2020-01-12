@@ -23,16 +23,18 @@ module Manipulatable
   end
   
   def shift_message(message, character_set, offset_shift_keys)
+    indexed_characters = {}
     split_message = message.split(//)
     encrypted_message = []
     
-    split_message.each.with_index do |letter, val|
-      
-      character_set.rotate(4)
-      
-      if val < 30
-        ""
-      end
+    character_set.each.with_index do |character, index|
+      indexed_characters[character] = index
+    end
+    
+    split_message.each do |character|
+      character_index = indexed_characters[character]
+      rotated_characters = character_set.rotate(offset_shift_keys[:A])
+      encrypted_message << rotated_characters[character_index]
     end
     
     "keder ohulw"
