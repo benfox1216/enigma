@@ -44,4 +44,9 @@ class EncryptionTest < Minitest::Test
     assert_equal "keder ohulw",
       @encryption.shift_message(message, char_set, offset_shift_keys)
   end
+  
+  def test_it_can_return_encryption_details
+    expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
+    assert_equal expected, @encryption.encryption_details
+  end
 end
