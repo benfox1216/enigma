@@ -25,7 +25,7 @@ module Manipulatable
   def shift_message(message, character_set, offset_shift_keys)
     indexed_characters = {}
     split_message = message.split(//)
-    encrypted_message = []
+    decrypted_message = []
     
     character_set.each.with_index do |character, index|
       indexed_characters[character] = index
@@ -37,8 +37,8 @@ module Manipulatable
       shift_key = offset_shift_keys.keys[iterate]
       
       character_index = indexed_characters[character]
-      rotated_characters = character_set.rotate(offset_shift_keys[shift_key])
-      encrypted_message << rotated_characters[character_index]
+      rotated_characters = character_set.rotate(-offset_shift_keys[shift_key])
+      decrypted_message << rotated_characters[character_index]
       
       iterate += 1
       
@@ -47,6 +47,6 @@ module Manipulatable
       end
     end
     
-    encrypted_message.join
+    decrypted_message.join
   end
 end

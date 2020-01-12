@@ -19,7 +19,7 @@ class Decryption
     shift_message(@message, @character_set, offset_shift_keys)
   end
   
-  def decryption_detail
+  def decryption_details
     details = {}
     details[:decryption] = get_decryption
     details[:key] = @key
