@@ -35,16 +35,19 @@ module Manipulatable
     
     split_message.each do |character|
       shift_key = offset_shift_keys.keys[iterate]
-      
       character_index = indexed_characters[character]
-  
-      if self.class == Encryption
-        rotated_characters = character_set.rotate(offset_shift_keys[shift_key])
-      else
-        rotated_characters = character_set.rotate(-offset_shift_keys[shift_key])
-      end
       
-      shifted_message << rotated_characters[character_index]
+      if indexed_characters.keys.include?(character) == true
+        if self.class == Encryption
+          rotated_characters = character_set.rotate(offset_shift_keys[shift_key])
+        else
+          rotated_characters = character_set.rotate(-offset_shift_keys[shift_key])
+        end
+        
+        shifted_message << rotated_characters[character_index]
+      else
+        shifted_message << character
+      end
       
       iterate += 1
       

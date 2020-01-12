@@ -14,7 +14,7 @@ class DecryptionTest < Minitest::Test
     character_set = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     
     assert_equal character_set, @decryption.character_set
-    assert_equal "keder ohulw", @decryption.message
+    assert_equal "keder ohulw", @decryption.ciphertext
     assert_equal "02715", @decryption.key
     assert_equal "040895", @decryption.date
   end
@@ -36,13 +36,13 @@ class DecryptionTest < Minitest::Test
       @decryption.offset_shift_keys(shift_keys, @decryption.date)
   end
   
-  def test_it_can_shift_message
-    message = @decryption.message
+  def test_it_can_shift_ciphertext
+    ciphertext = @decryption.ciphertext
     char_set = @decryption.character_set
     offset_shift_keys = {A: 3, B: 27, C: 73, D: 20}
     
     assert_equal "hello world",
-      @decryption.shift_message(message, char_set, offset_shift_keys)
+      @decryption.shift_message(ciphertext, char_set, offset_shift_keys)
   end
   
   def test_it_can_return_decryption_details

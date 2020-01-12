@@ -1,4 +1,5 @@
 require './lib/encryption'
+require './lib/decryption'
 
 class Enigma
   def encrypt(message, key, date)
@@ -7,6 +8,7 @@ class Enigma
   end
   
   def decrypt(ciphertext, key = nil, date = nil)
-    {decryption: "hello world", key: "02715", date: "040895"}
+    decryption = Decryption.new(ciphertext, key, date)
+    decryption.decryption_details
   end
 end
