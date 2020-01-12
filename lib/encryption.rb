@@ -1,4 +1,4 @@
-require 'manipulatable'
+require './lib/manipulatable'
 
 class Encryption
   include Manipulatable
@@ -19,7 +19,14 @@ class Encryption
     shift_keys = create_shift_keys(@key)
     offset_shift_keys = offset_shift_keys(shift_keys, @date)
     shift_message(@message, @character_set, offset_shift_keys)
+  end
+  
+  def encryption_details
+    details = {}
+    details[:encryption] = get_encryption
+    details[:key] = @key
+    details[:date] = @date
     
-    {encryption: "keder ohulw", key: @key, date: "040895"}
+    details
   end
 end

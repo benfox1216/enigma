@@ -20,8 +20,7 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_can_get_encryption
-    expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
-    assert_equal expected, @encryption.get_encryption
+    assert_equal "keder ohulw", @encryption.get_encryption
   end
   
   def test_it_can_create_shift_keys

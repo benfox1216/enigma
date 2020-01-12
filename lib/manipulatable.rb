@@ -31,12 +31,22 @@ module Manipulatable
       indexed_characters[character] = index
     end
     
+    iterate = 0
+    
     split_message.each do |character|
+      shift_key = offset_shift_keys.keys[iterate]
+      
       character_index = indexed_characters[character]
-      rotated_characters = character_set.rotate(offset_shift_keys[:A])
+      rotated_characters = character_set.rotate(offset_shift_keys[shift_key])
       encrypted_message << rotated_characters[character_index]
+      
+      iterate += 1
+      
+      if iterate > 3
+        iterate = 0
+      end
     end
     
-    "keder ohulw"
+    encrypted_message.join
   end
 end
