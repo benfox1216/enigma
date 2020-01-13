@@ -23,7 +23,7 @@ module Manipulatable
   end
   
   def shift_message(message, char_set, offset_shift_keys)
-    char_index = char_index(char_set)
+    char_index = create_char_index(char_set)
     split_message = message.split(//)
     shifted_message = []
     iteration = 0
@@ -43,7 +43,6 @@ module Manipulatable
   
   def valid_chars(char_set, offset_shift_keys, iteration, char_index, char)
     shift_key = offset_shift_keys.keys[iteration]
-    index_num = char_index[char]
     
     if self.class.to_s == "Encryption"
       rotated_characters = char_set.rotate(offset_shift_keys[shift_key])
@@ -52,10 +51,10 @@ module Manipulatable
       char_set.rotate(-offset_shift_keys[shift_key])
     end
     
-    rotated_characters[index_num]
+    rotated_characters[char_index[char]]
   end
   
-  def char_index(char_set)
+  def create_char_index(char_set)
     char_index = {}
     
     char_set.each.with_index do |char, index|

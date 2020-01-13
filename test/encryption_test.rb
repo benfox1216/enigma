@@ -5,6 +5,14 @@ class EncryptionTest < Minitest::Test
   def setup
     @encryption = Encryption.new("hello world", "02715", "040895")
     @today = Time.now.strftime("%d%m%y")
+    @char_set = ("a".."z").to_a << " "
+    @offset_shift_keys = {A: 3, B: 27, C: 73, D: 20}
+    @char_index = {
+      "a"=>0, "b"=>1, "c"=>2, "d"=>3, "e"=>4, "f"=>5, "g"=>6, "h"=>7,
+      "i"=>8, "j"=>9, "k"=>10, "l"=>11, "m"=>12, "n"=>13, "o"=>14, "p"=>15,
+      "q"=>16, "r"=>17, "s"=>18, "t"=>19, "u"=>20, "v"=>21, "w"=>22, "x"=>23,
+      "y"=>24, "z"=>25, " "=>26
+    }
   end
   
   def test_it_exists
@@ -31,9 +39,8 @@ class EncryptionTest < Minitest::Test
   
   def test_it_can_offset_shift_keys
     shift_keys = @encryption.create_shift_keys(@encryption.key)
-    offset_shift_keys = {A: 3, B: 27, C: 73, D: 20}
     
-    assert_equal offset_shift_keys,
+    assert_equal @offset_shift_keys,
       @encryption.offset_shift_keys(shift_keys, @encryption.date)
   end
   
@@ -84,16 +91,12 @@ class EncryptionTest < Minitest::Test
     assert_equal expected, encrypted
   end
   
+  def test_it_can_return_valid_characters
+    assert_equal "k", @encryption.valid_chars(@char_set, @offset_shift_keys, 0, @char_index, "h")
+  end
+  
   def test_it_can_create_character_index
-    char_set = ("a".."z").to_a << " "
-    expected = {
-      "a"=>0, "b"=>1, "c"=>2, "d"=>3, "e"=>4, "f"=>5, "g"=>6, "h"=>7,
-      "i"=>8, "j"=>9, "k"=>10, "l"=>11, "m"=>12, "n"=>13, "o"=>14, "p"=>15,
-      "q"=>16, "r"=>17, "s"=>18, "t"=>19, "u"=>20, "v"=>21, "w"=>22, "x"=>23,
-      "y"=>24, "z"=>25, " "=>26
-    }
-    
-    assert_equal expected, @encryption.char_index(char_set)
+    assert_equal @char_index, @encryption.create_char_index(@char_set)
   end
   
   def test_it_can_iterate
