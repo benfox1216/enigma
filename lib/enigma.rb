@@ -2,7 +2,7 @@ require './lib/encryption'
 require './lib/decryption'
 
 class Enigma
-  def encrypt(message, key, date)
+  def encrypt(message, key = nil, date = nil)
     encryption = Encryption.new(message, key, date)
     encryption.encryption_details
   end
