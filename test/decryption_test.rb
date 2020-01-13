@@ -4,6 +4,7 @@ require './lib/decryption'
 class DecryptionTest < Minitest::Test
   def setup
     @decryption = Decryption.new("keder ohulw", "02715", "040895")
+    @today = Time.now.strftime("%d%m%y")
   end
   
   def test_it_exists
@@ -48,5 +49,28 @@ class DecryptionTest < Minitest::Test
   def test_it_can_return_decryption_details
     expected = {decryption: "hello world", key: "02715", date: "040895"}
     assert_equal expected, @decryption.decryption_details
+  end
+  
+  def test_it_can_decrypt_messages_with_uppercase_letters
+    decryption_w_upcase = Decryption.new("Keder Ohulw", "02715", "040895")
+    expected = {decryption: "hello world", key: "02715", date: "040895"}
+    
+    assert_equal expected, decryption_w_upcase.decryption_details
+  end
+  
+  def test_it_can_decrypt_messages_with_special_characters
+    decryption_w_sp_char = Decryption.new("keder ohulw!", "02715", "040895")
+    expected = {decryption: "hello world!", key: "02715", date: "040895"}
+    
+    assert_equal expected, decryption_w_sp_char.decryption_details
+  end
+
+  def test_it_decrypt_using_todays_date
+    decryption_w_todays_date = Decryption.new("keder ohulw", "02715")
+    decrypted = decryption_w_todays_date.decryption_details
+    decrypted_message = decrypted[:decryption]
+    expected = {decryption: decrypted_message, key: "02715", date: @today}
+    
+    assert_equal expected, decryption_w_todays_date.decryption_details
   end
 end

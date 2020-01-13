@@ -38,10 +38,12 @@ module Manipulatable
       character_index = indexed_characters[character]
       
       if indexed_characters.keys.include?(character) == true
-        if self.class == Encryption
+        
+        if self.class.to_s == "Encryption"
           rotated_characters = character_set.rotate(offset_shift_keys[shift_key])
         else
-          rotated_characters = character_set.rotate(-offset_shift_keys[shift_key])
+          rotated_characters =
+          character_set.rotate(-offset_shift_keys[shift_key])
         end
         
         shifted_message << rotated_characters[character_index]

@@ -4,7 +4,7 @@ class Encryption
   include Manipulatable
   attr_reader :character_set, :message, :key, :date
   
-  def initialize(message, key, date)
+  def initialize(message, key = nil, date = nil)
     @character_set = ("a".."z").to_a << " "
     @message = message.downcase
     

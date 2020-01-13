@@ -4,6 +4,7 @@ require './lib/encryption'
 class EncryptionTest < Minitest::Test
   def setup
     @encryption = Encryption.new("hello world", "02715", "040895")
+    @today = Time.now.strftime("%d%m%y")
   end
   
   def test_it_exists
@@ -48,5 +49,38 @@ class EncryptionTest < Minitest::Test
   def test_it_can_return_encryption_details
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
     assert_equal expected, @encryption.encryption_details
+  end
+  
+  def test_it_can_encrypt_messages_with_uppercase_letters
+    encryption_w_upcase = Encryption.new("Hello World", "02715", "040895")
+    expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
+    
+    assert_equal expected, encryption_w_upcase.encryption_details
+  end
+  
+  def test_it_can_encrypt_messages_with_special_characters
+    encryption_w_sp_char = Encryption.new("hello world!", "02715", "040895")
+    expected = {encryption: "keder ohulw!", key: "02715", date: "040895"}
+    
+    assert_equal expected, encryption_w_sp_char.encryption_details
+  end
+
+  def test_it_encrypt_using_todays_date
+    encryption_w_todays_date = Encryption.new("hello world", "02715")
+    encrypted = encryption_w_todays_date.encryption_details
+    encrypted_message = encrypted[:encryption]
+    expected = {encryption: encrypted_message, key: "02715", date: @today}
+    
+    assert_equal expected, encryption_w_todays_date.encryption_details
+  end
+  
+  def test_it_can_encrypt_using_only_message
+    encryption_w_msg_only = Encryption.new("hello world")
+    encrypted = encryption_w_msg_only.encryption_details
+    encrypted_message = encrypted[:encryption]
+    encrypted_key = encrypted[:key]
+    expected = {encryption: encrypted_message, key: encrypted_key, date: @today}
+    
+    assert_equal expected, encrypted
   end
 end
