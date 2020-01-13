@@ -72,7 +72,8 @@ module Manipulatable
   
   def add_char(char_set, offset_shift_keys, iteration, char_index, char)
     if char_set.include?(char) == true
-      return valid_chars(char_set, offset_shift_keys, iteration, char_index, char)
+      return valid_chars(char_set, offset_shift_keys, iteration, char_index,
+        char)
     else
       return char
     end
