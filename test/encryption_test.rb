@@ -20,9 +20,7 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_has_attributes
-    character_set = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-    
-    assert_equal character_set, @encryption.character_set
+    assert_equal @char_set, @encryption.character_set
     assert_equal "hello world", @encryption.message
     assert_equal "02715", @encryption.key
     assert_equal "040895", @encryption.date
@@ -92,7 +90,8 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_can_return_valid_characters
-    assert_equal "k", @encryption.valid_chars(@char_set, @offset_shift_keys, 0, @char_index, "h")
+    assert_equal "k", @encryption.valid_chars(@char_set, @offset_shift_keys, 0,
+      @char_index, "h")
   end
   
   def test_it_can_create_character_index
@@ -106,6 +105,7 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_can_create_add_char_to_shifted_message
-    assert_equal "k", @encryption.add_char(@char_set, @offset_shift_keys, 0, @char_index, "h")
+    assert_equal "k", @encryption.add_char(@char_set, @offset_shift_keys, 0,
+      @char_index, "h")
   end
 end
