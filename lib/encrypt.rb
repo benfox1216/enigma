@@ -1,12 +1,14 @@
 require './lib/enigma'
 enigma = Enigma.new
 
+message_txt = File.open(ARGV[0], "r")
+message = message_txt.read
+message_txt.close
 
-# CREATES NEW READ/WRITE FILE
-encrypted = File.open("encrypted.txt", "w+")
+puts enigma.encrypt("hello world", "02715", "040895")
 
-new_file.write("all the text you want")
+capitalize = message.upcase
 
-ARGV == ["message.txt", "encrypted.txt"]
-ARGV[0] == "message.txt"
-ARGV[1] == "encrypted.txt"
+# writer = File.open(ARGV[1], "w")
+# writer.write(capitalize)
+# writer.close
