@@ -106,6 +106,6 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_can_create_add_char_to_shifted_message
-    assert_equal "k", @encryption.add_char
+    assert_equal "k", @encryption.add_char(@char_set, @offset_shift_keys, 0, @char_index, "h")
   end
 end
