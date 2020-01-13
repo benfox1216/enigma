@@ -2,21 +2,18 @@ require './lib/manipulatable'
 
 class Decryption
   include Manipulatable
-  attr_reader :character_set, :ciphertext, :key, :date
+  attr_reader :char_set, :ciphertext, :key, :date
   
   def initialize(ciphertext, key = nil, date = nil)
-    @character_set = ("a".."z").to_a << " "
     @ciphertext = ciphertext.downcase
     @key = key
-    
-    @today = Time.now.strftime("%d%m%y")
-    @date = (@today if date == nil) || date
+    @date = (Time.now.strftime("%d%m%y") if date == nil) || date
   end
   
   def get_decryption
     shift_keys = create_shift_keys(@key)
     offset_shift_keys = offset_shift_keys(shift_keys, @date)
-    shift_message(@ciphertext, @character_set, offset_shift_keys)
+    shift_message(@ciphertext, offset_shift_keys)
   end
   
   def decryption_details

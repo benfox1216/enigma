@@ -22,14 +22,16 @@ module Manipulatable
     new_shift_keys
   end
   
-  def shift_message(message, char_set, offset_shift_keys)
+  def shift_message(message, offset_shift_keys)
+    char_set = ("a".."z").to_a << " "
     char_index = create_char_index(char_set)
     split_message = message.split(//)
     shifted_message = []
     iteration = 0
     
     split_message.each do |char|
-      shifted_message << add_char(char_set, offset_shift_keys, iteration, char_index, char)
+      shifted_message << add_char(char_set, offset_shift_keys, iteration,
+        char_index, char)
       iteration = iterate(iteration)
     end
     

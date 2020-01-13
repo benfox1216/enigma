@@ -1,4 +1,5 @@
-Hello! Your mission, if you should choose to accept it, is to jump in the icy pond, and stay for at least 10 seconds. Don't die!
+Hello! Your mission, if you should choose to accept it, is to jump in the icy
+pond, and stay for at least 10 seconds. Don't die!
 
 Yours truly,
 Ben

@@ -20,7 +20,6 @@ class DecryptionTest < Minitest::Test
   end
   
   def test_it_has_attributes
-    assert_equal @char_set, @decryption.character_set
     assert_equal "keder ohulw", @decryption.ciphertext
     assert_equal "02715", @decryption.key
     assert_equal "040895", @decryption.date
@@ -37,19 +36,16 @@ class DecryptionTest < Minitest::Test
   
   def test_it_can_offset_shift_keys
     shift_keys = @decryption.create_shift_keys(@decryption.key)
-    offset_shift_keys = {A: 3, B: 27, C: 73, D: 20}
     
-    assert_equal offset_shift_keys,
+    assert_equal @offset_shift_keys,
       @decryption.offset_shift_keys(shift_keys, @decryption.date)
   end
   
   def test_it_can_shift_ciphertext
     ciphertext = @decryption.ciphertext
-    char_set = @decryption.character_set
-    offset_shift_keys = {A: 3, B: 27, C: 73, D: 20}
     
     assert_equal "hello world",
-      @decryption.shift_message(ciphertext, char_set, offset_shift_keys)
+      @decryption.shift_message(ciphertext, @offset_shift_keys)
   end
   
   def test_it_can_return_decryption_details

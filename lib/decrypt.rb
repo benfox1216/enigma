@@ -5,7 +5,7 @@ cipher_txt = File.open(ARGV[0], "r")
 cipher = cipher_txt.read
 cipher_txt.close
 
-decrypted_info = enigma.decrypt(cipher, "02715")
+decrypted_info = enigma.decrypt(cipher, ARGV[2], ARGV[3])
 cipher_text = decrypted_info[:decryption]
 cipher_key = decrypted_info[:key]
 cipher_date = decrypted_info[:date]

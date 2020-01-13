@@ -20,7 +20,6 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_has_attributes
-    assert_equal @char_set, @encryption.character_set
     assert_equal "hello world", @encryption.message
     assert_equal "02715", @encryption.key
     assert_equal "040895", @encryption.date
@@ -44,11 +43,10 @@ class EncryptionTest < Minitest::Test
   
   def test_it_can_shift_message
     message = @encryption.message
-    char_set = @encryption.character_set
     offset_shift_keys = {A: 3, B: 27, C: 73, D: 20}
     
     assert_equal "keder ohulw",
-      @encryption.shift_message(message, char_set, offset_shift_keys)
+      @encryption.shift_message(message, offset_shift_keys)
   end
   
   def test_it_can_return_encryption_details
