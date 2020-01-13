@@ -104,4 +104,8 @@ class EncryptionTest < Minitest::Test
     
     assert_equal 1, @encryption.iterate(iteration)
   end
+  
+  def test_it_can_create_add_char_to_shifted_message
+    assert_equal "k", @encryption.add_char
+  end
 end

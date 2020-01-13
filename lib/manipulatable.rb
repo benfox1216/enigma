@@ -28,15 +28,7 @@ module Manipulatable
     shifted_message = []
     iteration = 0
     
-    split_message.each do |char|
-      if char_set.include?(char) == true
-        shifted_message << valid_chars(char_set, offset_shift_keys, iteration, char_index, char)
-      else
-        shifted_message << char
-      end
-      
-      iteration = iterate(iteration)
-    end
+    add_char
     
     shifted_message.join
   end
@@ -73,5 +65,17 @@ module Manipulatable
     end
     
     iterate
+  end
+  
+  def add_char
+    split_message.each do |char|
+      if char_set.include?(char) == true
+        shifted_message << valid_chars(char_set, offset_shift_keys, iteration, char_index, char)
+      else
+        shifted_message << char
+      end
+      
+      iteration = iterate(iteration)
+    end
   end
 end
