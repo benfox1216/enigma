@@ -22,41 +22,57 @@ module Manipulatable
     new_shift_keys
   end
   
-  def shift_message(message, character_set, offset_shift_keys)
-    indexed_characters = {}
+  def shift_message(message, char_set, offset_shift_keys)
+    char_index = char_index(char_set)
     split_message = message.split(//)
     shifted_message = []
+    iteration = 0
     
-    character_set.each.with_index do |character, index|
-      indexed_characters[character] = index
-    end
-    
-    iterate = 0
-    
-    split_message.each do |character|
-      shift_key = offset_shift_keys.keys[iterate]
-      character_index = indexed_characters[character]
-      
-      if indexed_characters.keys.include?(character) == true
-        if self.class.to_s == "Encryption"
-          rotated_characters = character_set.rotate(offset_shift_keys[shift_key])
-        else
-          rotated_characters =
-          character_set.rotate(-offset_shift_keys[shift_key])
-        end
-        
-        shifted_message << rotated_characters[character_index]
+    split_message.each do |char|
+      if char_set.include?(char) == true
+        shifted_message << valid_chars(char_set, offset_shift_keys, iteration, char_index, char)
       else
-        shifted_message << character
+        shifted_message << char
       end
       
-      iterate += 1
-      
-      if iterate > 3
-        iterate = 0
-      end
+      iteration = iterate(iteration)
     end
     
     shifted_message.join
+  end
+  
+  def valid_chars(char_set, offset_shift_keys, iteration, char_index, char)
+    shift_key = offset_shift_keys.keys[iteration]
+    index_num = char_index[char]
+    
+    if self.class.to_s == "Encryption"
+      rotated_characters = char_set.rotate(offset_shift_keys[shift_key])
+    else
+      rotated_characters =
+      char_set.rotate(-offset_shift_keys[shift_key])
+    end
+    
+    rotated_characters[index_num]
+  end
+  
+  def char_index(char_set)
+    char_index = {}
+    
+    char_set.each.with_index do |char, index|
+      char_index[char] = index
+    end
+    
+    char_index
+  end
+  
+  def iterate(iteration)
+    iterate = iteration
+    iterate += 1
+    
+    if iterate > 3
+      iterate = 0
+    end
+    
+    iterate
   end
 end
