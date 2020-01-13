@@ -25,17 +25,35 @@ module Manipulatable
   def shift_message(message, offset_shift_keys)
     char_set = ("a".."z").to_a << " "
     char_index = create_char_index(char_set)
-    split_message = message.split(//)
     shifted_message = []
     iteration = 0
     
-    split_message.each do |char|
+    message.split(//).each do |char|
       shifted_message << add_char(char_set, offset_shift_keys, iteration,
         char_index, char)
       iteration = iterate(iteration)
     end
     
     shifted_message.join
+  end
+  
+  def create_char_index(char_set)
+    char_index = {}
+    
+    char_set.each.with_index do |char, index|
+      char_index[char] = index
+    end
+    
+    char_index
+  end
+  
+  def add_char(char_set, offset_shift_keys, iteration, char_index, char)
+    if char_set.include?(char) == true
+      return valid_chars(char_set, offset_shift_keys, iteration, char_index,
+        char)
+    else
+      return char
+    end
   end
   
   def valid_chars(char_set, offset_shift_keys, iteration, char_index, char)
@@ -51,16 +69,6 @@ module Manipulatable
     rotated_characters[char_index[char]]
   end
   
-  def create_char_index(char_set)
-    char_index = {}
-    
-    char_set.each.with_index do |char, index|
-      char_index[char] = index
-    end
-    
-    char_index
-  end
-  
   def iterate(iteration)
     iterate = iteration
     iterate += 1
@@ -70,14 +78,5 @@ module Manipulatable
     end
     
     iterate
-  end
-  
-  def add_char(char_set, offset_shift_keys, iteration, char_index, char)
-    if char_set.include?(char) == true
-      return valid_chars(char_set, offset_shift_keys, iteration, char_index,
-        char)
-    else
-      return char
-    end
   end
 end

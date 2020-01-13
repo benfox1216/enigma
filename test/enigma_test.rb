@@ -62,4 +62,8 @@ class EnigmaTest < Minitest::Test
     
     assert_equal expected, encrypted
   end
+  
+  # def test_it_can_crack_the_code_using_only_the_ciphertext
+  #   @enigma.crack("vjqtbeaweqihssi")
+  # end
 end
