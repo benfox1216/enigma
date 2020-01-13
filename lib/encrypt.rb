@@ -5,10 +5,13 @@ message_txt = File.open(ARGV[0], "r")
 message = message_txt.read
 message_txt.close
 
-puts enigma.encrypt("hello world", "02715", "040895")
+encrypted_info = enigma.encrypt("hello world", "02715", "040895")
+cipher_text = encrypted_info[:encryption]
+cipher_key = encrypted_info[:key]
+cipher_date = encrypted_info[:date]
 
-capitalize = message.upcase
+encrypted_txt = File.open(ARGV[1], "w")
+encrypted_txt.write(cipher_text)
+encrypted_txt.close
 
-# writer = File.open(ARGV[1], "w")
-# writer.write(capitalize)
-# writer.close
+puts "Created '#{ARGV[1]}' with the key #{cipher_key} and date #{cipher_date}"
