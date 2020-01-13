@@ -5,7 +5,7 @@ message_txt = File.open(ARGV[0], "r")
 message = message_txt.read
 message_txt.close
 
-encrypted_info = enigma.encrypt("hello world", "02715", "040895")
+encrypted_info = enigma.encrypt(message, "02715", "040895")
 cipher_text = encrypted_info[:encryption]
 cipher_key = encrypted_info[:key]
 cipher_date = encrypted_info[:date]
