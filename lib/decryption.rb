@@ -4,7 +4,7 @@ class Decryption
   include Manipulatable
   attr_reader :character_set, :ciphertext, :key, :date
   
-  def initialize(ciphertext, key, date)
+  def initialize(ciphertext, key = nil, date = nil)
     @character_set = ("a".."z").to_a << " "
     @ciphertext = ciphertext.downcase
     @key = key

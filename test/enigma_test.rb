@@ -49,8 +49,8 @@ class EnigmaTest < Minitest::Test
   def test_it_decrypt_using_todays_date
     encrypted = @enigma.encrypt("hello world", "02715")
     encrypted_message = encrypted[:encryption]
-    
     expected = {decryption: "hello world", key: "02715", date: @today}
+    
     assert_equal expected, @enigma.decrypt(encrypted_message, "02715")
   end
   
@@ -58,8 +58,8 @@ class EnigmaTest < Minitest::Test
     encrypted = @enigma.encrypt("hello_world")
     encrypted_message = encrypted[:encryption]
     encrypted_key = encrypted[:key]
-    
     expected = {encryption: encrypted_message, key: encrypted_key, date: @today}
+    
     assert_equal expected, encrypted
   end
 end
