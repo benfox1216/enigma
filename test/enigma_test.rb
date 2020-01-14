@@ -63,7 +63,11 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, encrypted
   end
   
-  # def test_it_can_crack_the_code_using_only_the_ciphertext
-  #   @enigma.crack("vjqtbeaweqihssi")
-  # end
+  def test_it_can_crack_the_code_using_only_the_ciphertext
+    encrypted = @enigma.encrypt("hello world end", "08304", @today)
+    expected = {decryption: "hello world end", date: @today,
+      key: encrypted[:key]}
+    
+    assert_equal expected, @enigma.crack("vjqtbeaweqihssi")
+  end
 end

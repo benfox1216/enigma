@@ -10,12 +10,6 @@ class Decryption
     @date = (Time.now.strftime("%d%m%y") if date == nil) || date
   end
   
-  def get_decryption
-    shift_keys = create_shift_keys(@key)
-    offset_shift_keys = offset_shift_keys(shift_keys, @date)
-    shift_message(@ciphertext, offset_shift_keys)
-  end
-  
   def decryption_details
     details = {}
     details[:decryption] = get_decryption
@@ -23,5 +17,15 @@ class Decryption
     details[:date] = @date
     
     details
+  end
+  
+  def get_decryption
+    shift_keys = create_shift_keys(@key)
+    offset_shift_keys = offset_shift_keys(shift_keys, @date)
+    shift_message(@ciphertext, offset_shift_keys)
+  end
+  
+  def crack
+    
   end
 end
