@@ -13,7 +13,7 @@ class Enigma
   end
   
   def crack(ciphertext, date = nil)
-    decryption_crack = Decryption.new(ciphertext, key, date)
-    decryption.crack(ciphertext, date = nil)
+    decryption_crack = Decryption.new(ciphertext, date)
+    decryption_crack.crack(ciphertext, date)
   end
 end
