@@ -26,6 +26,7 @@ class Decryption
   end
   
   def crack
-    
+    split_message = @ciphertext.split(//)
+    split_message.shift
   end
 end
