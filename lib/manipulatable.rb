@@ -25,13 +25,13 @@ module Manipulatable
   def shift_message(message, offset_shift_keys)
     char_set = ("a".."z").to_a << " "
     char_index = create_char_index(char_set)
-    shifted_message = []
-    iteration = 0
+    iteration = -1
     
-    message.split(//).each do |char|
-      shifted_message << add_char(char_set, offset_shift_keys, iteration,
-        char_index, char)
+    shifted_message = message.split(//).map do |char|
       iteration = iterate(iteration)
+      
+      add_char(char_set, offset_shift_keys, iteration,
+        char_index, char)
     end
     
     shifted_message.join
