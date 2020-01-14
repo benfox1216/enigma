@@ -11,4 +11,9 @@ class Enigma
     decryption = Decryption.new(ciphertext, key, date)
     decryption.decryption_details
   end
+  
+  def crack(ciphertext, date = nil)
+    decryption_crack = Decryption.new(ciphertext, key, date)
+    decryption.crack(ciphertext, date = nil)
+  end
 end

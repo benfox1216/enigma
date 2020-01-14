@@ -24,4 +24,8 @@ class Decryption
     
     details
   end
+  
+  def crack(ciphertext, date = nil)
+    
+  end
 end
