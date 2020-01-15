@@ -20,4 +20,4 @@ I did not get around to adding mocks or stubs, so that knocks it out of being a 
 
 ### Version Control: 4
 
-I have over 50 commits, well over the required 40 for a score of 4. My pull requests contain related and logical chunks of code, well defined by the branches I used, and I documented each one with an explanation of what it contains. Commits do not include multiple pieces of functionality, and the messages are well written to describe what work was done.
+I have over 60 commits, well over the required 40 for a score of 4. My pull requests contain related and logical chunks of code, well defined by the branches I used, and I documented each one with an explanation of what it contains. Commits do not include multiple pieces of functionality, and the messages are well written to describe what work was done.
