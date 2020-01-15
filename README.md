@@ -1,6 +1,6 @@
 # Enigma Self Assessment - Ben Fox
 
-### Overall Score: 3.6
+## Overall Score: 3.6
 
 ### Functionality: 3
 
