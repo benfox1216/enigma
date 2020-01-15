@@ -77,8 +77,8 @@ class DecryptionTest < Minitest::Test
   end
   
   def test_it_can_return_valid_characters
-    assert_equal "h", @decryption.valid_chars(@char_set, @offset_shift_keys, 0,
-      @char_index, "k")
+    assert_equal "h", @decryption.validate_chars(@char_set, @offset_shift_keys,
+      0, "k")
   end
   
   def test_it_can_create_character_index
@@ -92,7 +92,6 @@ class DecryptionTest < Minitest::Test
   end
   
   def test_it_can_create_add_char_to_shifted_message
-    assert_equal "h", @decryption.add_char(@char_set, @offset_shift_keys, 0,
-      @char_index, "k")
+    assert_equal "h", @decryption.add_char(@offset_shift_keys, 0, "k")
   end
 end

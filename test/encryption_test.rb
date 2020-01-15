@@ -88,8 +88,8 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_can_return_valid_characters
-    assert_equal "k", @encryption.valid_chars(@char_set, @offset_shift_keys, 0,
-      @char_index, "h")
+    assert_equal "k", @encryption.validate_chars(@char_set, @offset_shift_keys,
+      0, "h")
   end
   
   def test_it_can_create_character_index
@@ -103,7 +103,6 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_can_create_add_char_to_shifted_message
-    assert_equal "k", @encryption.add_char(@char_set, @offset_shift_keys, 0,
-      @char_index, "h")
+    assert_equal "k", @encryption.add_char(@offset_shift_keys, 0, "h")
   end
 end

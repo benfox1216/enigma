@@ -37,13 +37,13 @@ module Manipulatable
     char_set = ("a".."z").to_a << " "
     
     if char_set.include?(char) == true
-      return valid_chars(char_set, offset_shift_keys, iteration, char)
+      return validate_chars(char_set, offset_shift_keys, iteration, char)
     else
       return char
     end
   end
   
-  def valid_chars(char_set, offset_shift_keys, iteration, char)
+  def validate_chars(char_set, offset_shift_keys, iteration, char)
     char_index = create_char_index(char_set)
     shift_key = offset_shift_keys.keys[iteration]
     
