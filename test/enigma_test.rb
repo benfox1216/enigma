@@ -69,5 +69,5 @@ class EnigmaTest < Minitest::Test
   #     key: encrypted[:key]}
   #
   #   assert_equal expected, @enigma.crack("vjqtbeaweqihssi")
-  end
+  # end
 end
