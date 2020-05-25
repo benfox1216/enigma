@@ -26,7 +26,7 @@ class DecryptionTest < Minitest::Test
   end
   
   def test_it_can_get_decryption
-    assert_equal "hello world", @decryption.get_decryption
+    assert_equal "hello world", @decryption.decryption_details[:decryption]
   end
   
   def test_it_can_create_shift_keys

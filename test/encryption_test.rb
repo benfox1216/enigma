@@ -26,7 +26,7 @@ class EncryptionTest < Minitest::Test
   end
   
   def test_it_can_get_encryption
-    assert_equal "keder ohulw", @encryption.get_encryption
+    assert_equal "keder ohulw", @encryption.encryption_details[:encryption]
   end
   
   def test_it_can_create_shift_keys

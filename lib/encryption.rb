@@ -11,12 +11,6 @@ class Encryption
     @date = (Time.now.strftime("%d%m%y") if date == nil) || date
   end
   
-  def get_encryption
-    shift_keys = create_shift_keys(@key)
-    offset_shift_keys = offset_shift_keys(shift_keys, @date)
-    shift_message(@message, offset_shift_keys)
-  end
-  
   def encryption_details
     details = {}
     details[:encryption] = get_encryption
@@ -24,5 +18,13 @@ class Encryption
     details[:date] = @date
     
     details
+  end
+  
+  private
+  
+  def get_encryption
+    shift_keys = create_shift_keys(@key)
+    offset_shift_keys = offset_shift_keys(shift_keys, @date)
+    shift_message(@message, offset_shift_keys)
   end
 end

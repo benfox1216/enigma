@@ -19,6 +19,8 @@ class Decryption
     details
   end
   
+  private
+  
   def get_decryption
     shift_keys = create_shift_keys(@key)
     offset_shift_keys = offset_shift_keys(shift_keys, @date)
