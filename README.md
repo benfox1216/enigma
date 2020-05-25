@@ -1,23 +1,47 @@
-# Enigma Self Assessment - Ben Fox
+# Enigma
 
-## Overall Score: 3.6
+This was the final project for Mod 1 at the Turing School of Software & Design. The goal was to be able to encrypt and decrypt messages. For testing, we were given two paragraphs - one to encrypt, and one to decrypt - with the expected results given to us as well.
 
-### Functionality: 3
+## Getting Started
 
-I implemented the encrypt/decrypt methods in the Enigma class successfully, and set up the command line interfaces. Everything works as it's supposed to. While I spent time working on Iteration 4, I did not get the crack method working.
+These instructions will get you a copy of the project up and running on your local machine.
 
-### Object Oriented Programming: 4
+### Installation
+From your terminal, go to the folder you want to install this project in, then run this command:
 
-I implemented a module that contained methods useful for both the encryption & decryption classes, thus avoiding having to repeat the code for them. I also wrote those methods in a way that took into account which class was using them.
+```
+git clone https://github.com/benfox1216/enigma.git
+```
 
-### Ruby Conventions and Mechanics: 4
+Make sure Ruby 2.5.7 is installed. Install Bundler, then run it to install the remaining gems in the gemfile:
 
-I made sure to name my classes, methods and variables in a readable manner that made it easy to determine what their responsibilities were. The code is properly indented, and the syntax is consistent. My methods are no more than 10 lines, and I believe I used the correct enumerables for the given situations, and can speak as to why I chose them. I also used a hash in a logical way that helped a lot with making the data useful.
+```
+gem install bundler
+bundle install
+```
 
-### Test Driven Development: 3
+### Testing
 
-I did not get around to adding mocks or stubs, so that knocks it out of being a 4. However every method is tested, and because I followed SRP, each method had a single responsibility whose output was tested. Edge cases are addressed, such as capital letters and any character not a lowercase letter or a space. I wrote my tests prior to writing code, and my coverage is at 100%.
+You can run the test suite by running `rake test`.
 
-### Version Control: 4
+These test the encryption and the decryption features, with edge cases accounted for. It also tests the enima decrypt/encrypt methods separately, also with edge cases accounted for. All 43 assertions should pass, with 100% test coverage.
 
-I have over 60 commits, well over the required 40 for a score of 4. My pull requests contain related and logical chunks of code, well defined by the branches I used, and I documented each one with an explanation of what it contains. Commits do not include multiple pieces of functionality, and the messages are well written to describe what work was done.
+### Usage
+
+To see it in action, run the following command, and it will encrypt the message contained in the message.txt file, and save it to a new file called encrypted.txt:
+
+```
+ruby ./lib/encrypt.rb message.txt encrypted.txt
+```
+
+It will print a message confirming this has happened, and also give you the key and date for decryption.
+
+Example: `Created 'encrypted.txt' with the key 82648 and date 240818`
+
+Now run this next command to decrypt the message that was saved in the encrypted.txt file, using the key and the date from the last output. The decrypted message will be saved in a new file called decrypted.txt:
+
+```
+ruby ./lib/decrypt.rb encrypted.txt decrypted.txt 82648 240818
+```
+
+You should now have an encrypted.txt file with the encrypted message, and a decrypted file with the decrypted message, which should be the exact same as the original message in message.txt (except all letters will be lowercase).

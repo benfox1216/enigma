@@ -6,10 +6,8 @@ class Encryption
   
   def initialize(message, key = nil, date = nil)
     @message = message.downcase
-    
     @random_key = rand(99999).to_s.rjust(5, '0')
     @key = (@random_key if key == nil) || key
-    
     @date = (Time.now.strftime("%d%m%y") if date == nil) || date
   end
   

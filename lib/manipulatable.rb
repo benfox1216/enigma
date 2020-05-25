@@ -37,9 +37,9 @@ module Manipulatable
     char_set = ("a".."z").to_a << " "
     
     if char_set.include?(char) == true
-      return validate_chars(char_set, offset_shift_keys, iteration, char)
+      validate_chars(char_set, offset_shift_keys, iteration, char)
     else
-      return char
+      char
     end
   end
   

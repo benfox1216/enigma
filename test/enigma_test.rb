@@ -42,7 +42,7 @@ class EnigmaTest < Minitest::Test
   end
   
   def test_it_encrypt_using_todays_date
-    expected = {encryption: "nib udmcxpu", key: "02715", date: @today}
+    expected = {encryption: "jib qdmctpu", key: "02715", date: @today}
     assert_equal expected, @enigma.encrypt("hello world", "02715")
   end
   
@@ -62,12 +62,4 @@ class EnigmaTest < Minitest::Test
     
     assert_equal expected, encrypted
   end
-  
-  # def test_it_can_crack_the_code_using_only_the_ciphertext
-  #   encrypted = @enigma.encrypt("hello world end", "08304", @today)
-  #   expected = {decryption: "hello world end", date: @today,
-  #     key: encrypted[:key]}
-  #
-  #   assert_equal expected, @enigma.crack("vjqtbeaweqihssi")
-  # end
 end
