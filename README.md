@@ -1,6 +1,6 @@
 # Enigma
 
-This was the final project for Mod 1 at the Turing School of Software & Design. The goal was to be able to encrypt and decrypt messages. For testing, we were given two paragraphs - one to encrypt, and one to decrypt - with the expected results given to us as well.
+This was the final project for Mod 1 at the Turing School of Software & Design. The goal was to be able to encrypt and decrypt messages. We were given a paragraph to encrypt, creating a key and a date to use for decryption. Then we were expected to be able to decrypt the encrypted message using that key and date, and get a file with a paragraph the exact same as the original message, but with all lowercase letters.
 
 ## Getting Started
 
@@ -16,6 +16,8 @@ git clone https://github.com/benfox1216/enigma.git
 ```
 
 Enter the command `cd enigma`
+
+Open the directory in your favorite text editor.
 
 Make sure Ruby 2.5.7 is installed. Install Bundler, then run it to install the remaining gems in the gemfile:
 
