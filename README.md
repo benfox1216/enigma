@@ -24,7 +24,9 @@ bundle install
 
 You can run the test suite by running `rake test`.
 
-These test the encryption and the decryption features, with edge cases accounted for. It also tests the enima decrypt/encrypt methods separately, also with edge cases accounted for. All 43 assertions should pass, with 100% test coverage.
+These test the encryption and the decryption features, with edge cases accounted for. It also tests the enima decrypt/encrypt methods separately, also with edge cases accounted for. While the usage commands use today's date, it can also work using a random date.
+
+All 43 assertions should pass, with 100% test coverage.
 
 ### Usage
 
@@ -34,14 +36,16 @@ To see it in action, run the following command, and it will encrypt the message 
 ruby ./lib/encrypt.rb message.txt encrypted.txt
 ```
 
-It will print a message confirming this has happened, and also give you the key and date for decryption.
+It will print a message confirming this has happened, and also give you an automatically generated key and today's date in 6-digit format for decryption.
 
-Example: `Created 'encrypted.txt' with the key 82648 and date 240818`
+Example: `Created 'encrypted.txt' with the key 67939 and date 250520`
 
-Now run this next command to decrypt the message that was saved in the encrypted.txt file, using the key and the date from the last output. The decrypted message will be saved in a new file called decrypted.txt:
+Now run this next command to decrypt the message that was saved in the encrypted.txt file, using the random key and the date from the last output. The decrypted message will be saved in a new file called decrypted.txt:
+
+*Note: "(key given)" and "(date given)" reference the ones given as the output to the encryption command*
 
 ```
-ruby ./lib/decrypt.rb encrypted.txt decrypted.txt 82648 240818
+ruby ./lib/decrypt.rb encrypted.txt decrypted.txt (key given) (date given)
 ```
 
 You should now have an encrypted.txt file with the encrypted message, and a decrypted file with the decrypted message, which should be the exact same as the original message in message.txt (except all letters will be lowercase).
