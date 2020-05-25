@@ -20,15 +20,15 @@ gem install bundler
 bundle install
 ```
 
-### Testing
+## Testing
 
 You can run the test suite by running `rake test`.
 
-These test the encryption and the decryption features, with edge cases accounted for. It also tests the enima decrypt/encrypt methods separately, also with edge cases accounted for. While the usage commands use today's date, it can also work using a random date.
+These test the encryption and the decryption features, with edge cases accounted for. It also tests the enigma decrypt/encrypt methods separately, also with edge cases accounted for. While the usage commands use today's date, it can also work using a random date.
 
 All 43 assertions should pass, with 100% test coverage.
 
-### Usage
+## Usage
 
 To see it in action, run the following command, and it will encrypt the message contained in the message.txt file, and save it to a new file called encrypted.txt:
 
