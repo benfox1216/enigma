@@ -26,6 +26,8 @@ You can run the test suite by running `rake test`.
 
 These test the encryption and the decryption features, with edge cases accounted for. It also tests the enigma decrypt/encrypt methods separately, also with edge cases accounted for. While the usage commands use today's date, it can also work using a random date.
 
+You will also have the ability to utilize `binding.pry` to pry into the code contained in the lib folder (except in encrypt.rb & decrypt.rb), and the tests in the test folder.
+
 All 43 assertions should pass, with 100% test coverage.
 
 ## Usage
