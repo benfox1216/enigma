@@ -1,4 +1,6 @@
 require './lib/enigma'
+require 'pry'
+
 enigma = Enigma.new
 
 cipher_txt = File.open(ARGV[0], "r")
