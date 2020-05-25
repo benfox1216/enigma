@@ -7,11 +7,15 @@ This was the final project for Mod 1 at the Turing School of Software & Design. 
 These instructions will get you a copy of the project up and running on your local machine.
 
 ### Installation
+*Terminal commands are on a Mac*
+
 From your terminal, go to the folder you want to install this project in, then run this command:
 
 ```
 git clone https://github.com/benfox1216/enigma.git
 ```
+
+Enter the command `cd enigma`
 
 Make sure Ruby 2.5.7 is installed. Install Bundler, then run it to install the remaining gems in the gemfile:
 
